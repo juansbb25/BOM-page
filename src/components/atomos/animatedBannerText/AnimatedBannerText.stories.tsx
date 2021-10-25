@@ -20,7 +20,7 @@ const Template = ({ ...rest }: AnimatedBannerTextProps) => {
 export const Primary = Template.bind({})
 
 Primary.args = {
-  myText: ['Invierte Seguro,', 'el unico Exchange', 'del Ecuador'],
+  myText: ['TEXTO 1', 'TEXTO 2', 'TEXTO 3'],
   toColor: 'black',
   fromColor: 'black',
   mass: 2000,

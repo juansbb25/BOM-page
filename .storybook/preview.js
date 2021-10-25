@@ -10,7 +10,6 @@ import * as NextImage from 'next/image'
 
 const OriginalNextImage = NextImage.default
 
-export const decorators = []
 export const parameters = {
   nextRouter: {
     path: '/', // defaults to `/`
