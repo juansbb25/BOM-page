@@ -5,7 +5,9 @@
 // in the context of our stories
 import { RouterContext } from 'next/dist/shared/lib/router-context' // next 11.2
 import '../src/styles/index.css'
-
+import { ThemeProvider } from '@mui/material'
+import { addDecorator } from '@storybook/react'
+import { muiTheme } from '../src/themes/stylesheet'
 import * as NextImage from 'next/image'
 
 const OriginalNextImage = NextImage.default
@@ -38,3 +40,6 @@ Object.defineProperty(NextImage, 'default', {
     />
   ),
 })
+addDecorator((story) => (
+  <ThemeProvider theme={muiTheme}>{story()}</ThemeProvider>
+))

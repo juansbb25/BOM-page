@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload } from '@react-three/drei/web'
+import { OrbitControls, Preload } from '@react-three/drei'
 import useStore from '@/helpers/store'
 import { useEffect, useRef } from 'react'
 

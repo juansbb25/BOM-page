@@ -3,7 +3,7 @@ import { useFrame, useLoader } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
-import { PerspectiveCamera } from '@react-three/drei/web'
+import { PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 import { Vector3 } from 'three'
 const RoomComponent = () => {

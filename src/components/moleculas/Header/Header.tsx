@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import React, { FC } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
-import Link from '../Link/Link'
+import Link from '../../atomos/Link/Link'
 import { useRouter } from 'next/router'
 
 export type HeaderProps = {
