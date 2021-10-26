@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
 import useStore from '@/helpers/store'
-import { useEffect, Children } from 'react'
+import { ThemeProvider } from '@mui/material'
+import React, { useEffect, Children } from 'react'
 import Header from '@/config'
 import dynamic from 'next/dynamic'
 import Dom from '@/components/layout/dom'
-
+import { muiTheme } from '@/themes/stylesheet'
 import '@/styles/index.css'
 import { CssBaseline } from '@mui/material'
 
@@ -18,7 +19,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function Layout({ dom }) {
-  return <>{dom && <Dom>{dom}</Dom>}</>
+  return (
+    <ThemeProvider theme={muiTheme}>{dom && <Dom>{dom}</Dom>}</ThemeProvider>
+  )
 }
 
 const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {

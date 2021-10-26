@@ -40,8 +40,20 @@ const DOM = () => {
             layout='fill'
             objectFit='cover'
           />
+          <Box
+            sx={{
+              width: 1000,
+              position: 'absolute',
+              bottom: -20,
+              right: 0,
+              left: 0,
+              margin: 'auto',
+            }}
+          >
+            <SearchBar />
+          </Box>
         </Box>
-        <SearchBar />
+        <Box sx={{ height: 400 }}>HOLA</Box>
       </>
     </MainLayout>
   )

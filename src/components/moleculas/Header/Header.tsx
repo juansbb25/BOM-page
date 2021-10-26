@@ -41,6 +41,7 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
       <Link key={index} href={item.path} isButton>
         <Typography
           color={isTransparent ? 'primary.main' : 'primary.contrastText'}
+          variant='h5'
         >
           {item.name}
         </Typography>
@@ -70,9 +71,6 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
     <div className='flex-grow'>
       <AppBar style={isTransparent ? { background: 'transparent' } : {}}>
         <Toolbar>
-          <Typography variant='h6' className=''>
-            {title}
-          </Typography>
           <Stack direction='row'>{menuItemsComponents}</Stack>
           <div className='flex md:hidden absolute right-4'>
             <IconButton
