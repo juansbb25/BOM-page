@@ -3,11 +3,7 @@ import Footer, { FooterProps } from './Footer'
 export default {
   title: 'Atomos/Footer',
   component: Footer,
-  controls: {
-    matchers: {
-      backgroundColor: /(background|color)$/i,
-    },
-  },
+  controls: {},
 }
 const Template = ({ ...rest }: FooterProps) => {
   //👇 Assigns the function result to a variable
@@ -16,4 +12,7 @@ const Template = ({ ...rest }: FooterProps) => {
 }
 export const Primary = Template.bind({})
 
-Primary.args = { backgroundColor: 'primary.main', textColor: 'textSecondary' }
+Primary.args = {
+  backgroundColor: 'primary.main',
+  text: 'hola mundo',
+}

@@ -3,16 +3,21 @@ import { createTheme } from '@mui/material'
 export const muiTheme = createTheme({
   palette: {
     primary: {
-      main: '#ff0000',
+      main: '#480ca8',
+      light: '#4895ef',
+      dark: '#560bad',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#f72585',
+    },
+    info: {
+      main: '#4cc9f0',
     },
   },
   typography: {
-    fontFamily: 'Nunito Sans, sans-serif',
-    button: {
-      textTransform: 'none',
+    h3: {
+      fontWeight: 600,
     },
-  },
-  shape: {
-    borderRadius: 3,
   },
 })

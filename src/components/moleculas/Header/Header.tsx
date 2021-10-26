@@ -6,25 +6,26 @@ import {
   Menu,
   MenuItem,
   Button,
+  Stack,
 } from '@mui/material'
 import React, { FC } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
-import Link from '../../atomos/Link/Link'
+import Link from '@/components/atomos/Link/Link'
 import { useRouter } from 'next/router'
 
 export type HeaderProps = {
   logo?: string
   title: string
+  isTransparent?: boolean
   menuItems: {
     name: string
     path: string
   }[]
 }
 
-const Header: FC<HeaderProps> = ({ logo, title, menuItems }) => {
+const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const [isMenuOpen, setIsMenuOpen] = React.useState(null)
-  const router = useRouter()
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const handleProfileMenuOpen = (event) => {
     setIsMenuOpen(Boolean(event.currentTarget))
     setAnchorEl(event.currentTarget)
@@ -38,7 +39,11 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems }) => {
   const menuItemsComponents = menuItems.map((item, index) => {
     return (
       <Link key={index} href={item.path} isButton>
-        <h1>{item.name}</h1>
+        <Typography
+          color={isTransparent ? 'primary.main' : 'primary.contrastText'}
+        >
+          {item.name}
+        </Typography>
       </Link>
     )
   })
@@ -63,14 +68,12 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems }) => {
 
   return (
     <div className='flex-grow'>
-      <AppBar position='static'>
+      <AppBar style={isTransparent ? { background: 'transparent' } : {}}>
         <Toolbar>
           <Typography variant='h6' className=''>
             {title}
           </Typography>
-          <div className='hidden md:flex absolute right-4 '>
-            {menuItemsComponents}
-          </div>
+          <Stack direction='row'>{menuItemsComponents}</Stack>
           <div className='flex md:hidden absolute right-4'>
             <IconButton
               aria-label='show more'

@@ -1,18 +1,50 @@
-import dynamic from 'next/dynamic'
 // Step 5 - delete Instructions components
-import { FC } from 'react'
-
+import MainLayout from '@/components/layout/MainLayout'
+import Footer from '@/components/moleculas/Footer'
+import React, { FC } from 'react'
+import Image from 'next/image'
+import img from '@/public/img/1.jpg'
+import { Box } from '@mui/material'
+import SearchBar from '@/components/atomos/SearchBar'
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
 // https://github.com/pmndrs/react-three-next/issues/49
-const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
-  ssr: false,
-})
 
 // dom components goes here
 const DOM = () => {
-  return <></>
+  return (
+    <MainLayout
+      isTransparent
+      title='Mi Pagina'
+      menuItems={[
+        { name: 'Menu', path: '/menu' },
+        { name: 'home', path: '/' },
+      ]}
+    >
+      <>
+        <Box
+          sx={{
+            height: 400,
+            zIndex: -10,
+            position: 'relative',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            bgcolor: 'red',
+          }}
+        >
+          <Image
+            src={img}
+            alt='Picture of the author'
+            layout='fill'
+            objectFit='cover'
+          />
+        </Box>
+        <SearchBar />
+      </>
+    </MainLayout>
+  )
 }
 type R3FProps = {
   r3f: any

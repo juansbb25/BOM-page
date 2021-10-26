@@ -3,21 +3,19 @@ import { Facebook, Instagram, Twitter } from '@mui/icons-material'
 import React, { FC } from 'react'
 
 export type FooterProps = {
-  backgroundColor: string
-  textColor: any
+  text: string
 }
 
-const Footer: FC<FooterProps> = ({ backgroundColor, textColor }) => {
+const Footer: FC<FooterProps> = ({ text }) => {
   return (
     <Box
       display='flex'
       flexDirection='column'
-      m={4}
-      bgcolor={backgroundColor}
       width='full'
-      height={128}
+      height={48}
       textAlign='center'
       justifyContent='center'
+      bgcolor='primary.main'
     >
       <Box
         display='flex'
@@ -25,15 +23,9 @@ const Footer: FC<FooterProps> = ({ backgroundColor, textColor }) => {
         textAlign='center'
         justifyContent='center'
       >
-        <Typography color={textColor}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+        <Typography variant='h5' color='primary.contrastText'>
+          {text}
         </Typography>
-      </Box>
-      <Box>
-        <Facebook color='secondary' />
-        <Instagram color='secondary' />
-        <Twitter color='secondary' />
       </Box>
     </Box>
   )
