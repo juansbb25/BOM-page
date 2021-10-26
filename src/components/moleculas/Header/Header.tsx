@@ -39,12 +39,7 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
   const menuItemsComponents = menuItems.map((item, index) => {
     return (
       <Link key={index} href={item.path} isButton>
-        <Typography
-          color={isTransparent ? 'primary.main' : 'primary.contrastText'}
-          variant='h5'
-        >
-          {item.name}
-        </Typography>
+        <>item.name</>
       </Link>
     )
   })

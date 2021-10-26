@@ -22,5 +22,8 @@ export const muiTheme = createTheme({
     h5: {
       fontWeight: 700,
     },
+    body1: {
+      fontSize: '12px',
+    },
   },
 })
