@@ -7,23 +7,30 @@ import {
   MenuItem,
   Button,
   Stack,
+  useScrollTrigger,
 } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import Link from '@/components/atomos/Link/Link'
-import { useRouter } from 'next/router'
 
 export type HeaderProps = {
   logo?: string
   title: string
-  isTransparent?: boolean
   menuItems: {
     name: string
     path: string
   }[]
+  reference?: React.MutableRefObject<any>
 }
 
-const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
+const Header: FC<HeaderProps> = ({ reference, menuItems }) => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    ...(reference && { target: reference.current }),
+  })
+  console.debug(reference)
+
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const handleProfileMenuOpen = (event) => {
@@ -61,13 +68,13 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
       {menuItemsComponents}
     </Menu>
   )
-
+  useEffect(() => {}, [reference])
   return (
     <div className='flex-grow'>
-      <AppBar style={isTransparent ? { background: 'transparent' } : {}}>
+      <AppBar sx={trigger ? {} : { backgroundColor: 'transparent' }}>
         <Toolbar>
           <Stack direction='row'>{menuItemsComponents}</Stack>
-          <div className='flex md:hidden absolute right-4'>
+          <div className='absolute md:hidden right-4'>
             <IconButton
               aria-label='show more'
               aria-haspopup='true'
@@ -77,9 +84,9 @@ const Header: FC<HeaderProps> = ({ logo, title, menuItems, isTransparent }) => {
               <MenuIcon />
             </IconButton>
           </div>
+          {rendererMenu}
         </Toolbar>
       </AppBar>
-      {rendererMenu}
     </div>
   )
 }

@@ -4,8 +4,10 @@ import Footer from '@/components/moleculas/Footer'
 import React, { FC } from 'react'
 import Image from 'next/image'
 import img from '@/public/img/1.jpg'
-import { Box } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import SearchBar from '@/components/atomos/SearchBar'
+import CategoryPaper from '@/components/atomos/categoryPaper'
+import ProductCard from '@/components/atomos/ProductCard'
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
@@ -22,39 +24,62 @@ const DOM = () => {
         { name: 'home', path: '/' },
       ]}
     >
-      <>
+      <Box
+        sx={{
+          minHeight: 400,
+          zIndex: 0,
+          position: 'relative',
+          top: 0,
+          left: 0,
+          width: '100%',
+          bgcolor: 'red',
+        }}
+      >
+        <Image
+          src={img}
+          alt='Picture of the author'
+          layout='fill'
+          objectFit='cover'
+        />
         <Box
           sx={{
-            height: 400,
-            zIndex: -10,
-            position: 'relative',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            bgcolor: 'red',
+            width: '100%',
+            position: 'absolute',
+            bottom: -20,
           }}
         >
-          <Image
-            src={img}
-            alt='Picture of the author'
-            layout='fill'
-            objectFit='cover'
-          />
-          <Box
-            sx={{
-              width: 1000,
-              position: 'absolute',
-              bottom: -20,
-              right: 0,
-              left: 0,
-              margin: 'auto',
-            }}
-          >
-            <SearchBar />
-          </Box>
+          <SearchBar />
         </Box>
-        <Box sx={{ height: 400 }}>HOLA</Box>
-      </>
+      </Box>
+      <Stack
+        sx={{ paddingX: { xs: 2, sm: 3, md: 6, lg: 12 }, paddingY: 6 }}
+        spacing={4}
+      >
+        <Typography variant='h5'>Categorias</Typography>
+        <Stack
+          direction='row'
+          alignItems='center'
+          spacing={2}
+          sx={{
+            overflowX: 'hidden',
+          }}
+        >
+          {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((item, i) => (
+            <CategoryPaper key={i} text='Categoria' />
+          ))}
+        </Stack>
+        <Grid container spacing={2}>
+          {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((item, i) => (
+            <Grid key={i} item xs={12} sm={6} md={4} lg={3}>
+              <ProductCard
+                title={item}
+                imgPath='https://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/w_1280,c_limit/the-ultimate-hamburger.jpg'
+                text='lorem ipsum dolor sit amet, consectetur adip'
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Stack>
     </MainLayout>
   )
 }

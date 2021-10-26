@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router'
 import useStore from '@/helpers/store'
-import { ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import React, { useEffect, Children } from 'react'
 import Header from '@/config'
 import dynamic from 'next/dynamic'
 import Dom from '@/components/layout/dom'
 import { muiTheme } from '@/themes/stylesheet'
 import '@/styles/index.css'
-import { CssBaseline } from '@mui/material'
 
 let LCanvas = null
 if (process.env.NODE_ENV === 'production') {
@@ -20,7 +19,10 @@ if (process.env.NODE_ENV === 'production') {
 
 function Layout({ dom }) {
   return (
-    <ThemeProvider theme={muiTheme}>{dom && <Dom>{dom}</Dom>}</ThemeProvider>
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      {dom && <Dom>{dom}</Dom>}
+    </ThemeProvider>
   )
 }
 

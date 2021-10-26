@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material'
 
 export const muiTheme = createTheme({
+  components: {},
   palette: {
     primary: {
       main: '#480ca8',
@@ -20,7 +21,7 @@ export const muiTheme = createTheme({
       fontWeight: 600,
     },
     h5: {
-      fontWeight: 700,
+      fontWeight: 600,
     },
     body1: {
       fontSize: '12px',

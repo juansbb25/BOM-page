@@ -1,14 +1,13 @@
 import Footer from '@/components/moleculas/Footer'
 import Header from '@/components/moleculas/Header'
 import { Stack } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 type Items = {
   name: string
   path: string
 }
 type MainLayoutProps = {
-  children: React.ReactElement
   title: string
   menuItems: Items[]
   isTransparent: boolean
@@ -19,13 +18,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   title,
   isTransparent,
 }) => {
+  const refHeader = React.useRef()
+  const [ref, setRef] = useState(null)
+  useEffect(() => {
+    setRef(refHeader)
+  }, [refHeader])
   return (
-    <Stack>
-      <Header
-        title={title}
-        menuItems={menuItems}
-        isTransparent={isTransparent}
-      />
+    <Stack
+      sx={{ height: '100%', width: '100%' }}
+      overflow='auto'
+      ref={refHeader}
+    >
+      <Header title={title} menuItems={menuItems} reference={ref} />
       {children}
       <Footer text='holas' />
     </Stack>

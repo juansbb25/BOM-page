@@ -86,3 +86,8 @@ module.exports = plugins(
   ],
   nextConfig
 )
+module.exports = {
+  images: {
+    domains: ['assets.epicurious.com'],
+  },
+}

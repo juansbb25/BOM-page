@@ -37,7 +37,7 @@ const Link: FC<LinkProps> = ({
         <Typography
           color={
             router.pathname === props.href
-              ? 'primary.main'
+              ? 'secondary'
               : 'primary.contrastText'
           }
         >
