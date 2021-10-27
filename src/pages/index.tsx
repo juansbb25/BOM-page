@@ -1,7 +1,7 @@
 // Step 5 - delete Instructions components
 import MainLayout from '@/components/layout/MainLayout'
 import Footer from '@/components/moleculas/Footer'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import Image from 'next/image'
 import img from '@/public/img/1.jpg'
 import { Box, Grid, Stack, Typography } from '@mui/material'
@@ -15,10 +15,12 @@ import ProductCard from '@/components/atomos/ProductCard'
 
 // dom components goes here
 const DOM = () => {
+  const [ref, setRef] = useState(null)
   return (
     <MainLayout
       isTransparent
       title='Mi Pagina'
+      refCallback={setRef}
       menuItems={[
         { name: 'Menu', path: '/menu' },
         { name: 'home', path: '/' },
@@ -26,19 +28,22 @@ const DOM = () => {
     >
       <Box
         sx={{
-          minHeight: 400,
+          minHeight: 300,
           zIndex: 0,
           position: 'relative',
           top: 0,
           left: 0,
           width: '100%',
-          bgcolor: 'red',
         }}
       >
         <Image
-          src={img}
+          src={
+            'https://static.vecteezy.com/system/resources/previews/000/833/542/non_2x/abstract-black-background-with-blue-light-lines-crossing-vector.jpg'
+          }
           alt='Picture of the author'
           layout='fill'
+          placeholder='blur'
+          blurDataURL='https://abstackwp.khingars.com/wp-content/uploads/2021/09/image-blur-placeholder.png'
           objectFit='cover'
         />
         <Box
@@ -71,11 +76,14 @@ const DOM = () => {
         <Grid container spacing={2}>
           {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((item, i) => (
             <Grid key={i} item xs={12} sm={6} md={4} lg={3}>
-              <ProductCard
-                title={item}
-                imgPath='https://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/w_1280,c_limit/the-ultimate-hamburger.jpg'
-                text='lorem ipsum dolor sit amet, consectetur adip'
-              />
+              {ref && (
+                <ProductCard
+                  reference={ref}
+                  title={item}
+                  imgPath='https://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/w_1280,c_limit/the-ultimate-hamburger.jpg'
+                  text='lorem ipsum dolor sit amet, consectetur adip'
+                />
+              )}
             </Grid>
           ))}
         </Grid>

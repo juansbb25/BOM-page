@@ -11,14 +11,18 @@ type MainLayoutProps = {
   title: string
   menuItems: Items[]
   isTransparent: boolean
+  refCallback: (ref: any) => void
 }
 const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   menuItems,
   title,
   isTransparent,
+  refCallback,
 }) => {
   const refHeader = React.useRef()
+  refCallback(refHeader)
+
   const [ref, setRef] = useState(null)
   useEffect(() => {
     setRef(refHeader)

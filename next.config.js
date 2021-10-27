@@ -164,6 +164,10 @@ module.exports = plugins(
 )
 module.exports = {
   images: {
-    domains: ['assets.epicurious.com'],
+    domains: [
+      'assets.epicurious.com',
+      'besthqwallpapers.com',
+      'static.vecteezy.com',
+    ],
   },
 }
