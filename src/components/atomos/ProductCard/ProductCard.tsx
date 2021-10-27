@@ -26,6 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     threshold: 0,
     target: reference.current,
   })
+  console.log(reference)
   return (
     <Slide in={trigger} direction='right'>
       <Stack alignItems='center'>

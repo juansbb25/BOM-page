@@ -1,7 +1,7 @@
 // Step 5 - delete Instructions components
 import MainLayout from '@/components/layout/MainLayout'
 import Footer from '@/components/moleculas/Footer'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import img from '@/public/img/1.jpg'
 import { Box, Grid, Stack, Typography } from '@mui/material'
@@ -15,12 +15,17 @@ import ProductCard from '@/components/atomos/ProductCard'
 
 // dom components goes here
 const DOM = () => {
+  const refHeader = React.useRef()
+
   const [ref, setRef] = useState(null)
+  useEffect(() => {
+    setRef(refHeader)
+  }, [refHeader])
   return (
     <MainLayout
       isTransparent
       title='Mi Pagina'
-      refCallback={setRef}
+      reference={refHeader}
       menuItems={[
         { name: 'Menu', path: '/menu' },
         { name: 'home', path: '/' },
@@ -78,7 +83,7 @@ const DOM = () => {
             <Grid key={i} item xs={12} sm={6} md={4} lg={3}>
               {ref && (
                 <ProductCard
-                  reference={ref}
+                  reference={refHeader}
                   title={item}
                   imgPath='https://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/w_1280,c_limit/the-ultimate-hamburger.jpg'
                   text='lorem ipsum dolor sit amet, consectetur adip'
